@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "baseball-sabermetrics-mcp"
+version = "0.1.0"
+description = "A local, read-only MCP server for public baseball data"
+requires-python = ">=3.10"
+dependencies = []
+license = { text = "MIT" }
+readme = "README.md"
+
+[project.scripts]
+baseball-sabermetrics = "baseball_mcp.cli:main"
+baseball-sabermetrics-mcp = "baseball_mcp.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
