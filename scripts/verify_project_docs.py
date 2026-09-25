@@ -25,7 +25,7 @@ def main() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     assert "does not download, bundle, or redistribute baseball data" in readme
     assert "docs/mcp-interface.json" in readme
-    print("Project documentation verification passed")
+    print("project documentation verification passed")
 
 
 if __name__ == "__main__":
