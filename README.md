@@ -15,6 +15,10 @@ The software does not download, bundle, or redistribute baseball data. Source fi
 
 The catalog links each source to its upstream project and records reuse notes. These notes do not replace the notices shipped with a specific release. Check [Data sources and reuse](docs/data-sources.md) before importing or sharing any source data.
 
+### Retrosheet attribution
+
+The information used here was obtained free of charge from and is copyrighted by Retrosheet. Interested parties may contact Retrosheet at 20 Sunset Rd., Newark, DE 19711. See [Retrosheet's data-use guidance](https://www.retrosheet.org/) and preserve any attribution shipped with the source files.
+
 ### OpenBiomechanics Project data terms
 
 The OBP integration imports only CSV files already present in a local OBP checkout. It never downloads C3D files, full-signal archives, or the upstream data release. OBP code is MIT licensed, while OBP data and biomechanics documentation have separate terms: CC BY-NC-SA 4.0 plus an additional exclusion that prohibits any use by employees or contractors employed by, associated with, or significant shareholders of professional sports organizations or financial analysis firms without a separate written paid license. Read the complete upstream [`LICENSE-DATA.md`](https://github.com/drivelineresearch/openbiomechanics/blob/main/LICENSE-DATA.md) before using the data. This project’s MIT license applies to this project’s code only.
