@@ -17,7 +17,7 @@ from .ingest import default_database_path, import_csv_dataset, import_retrosheet
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="baseball-sabermetrics",
-        description="Import public baseball CSV and Retrosheet event files into a local SQLite database.",
+        description="Import user-supplied public baseball CSV and Retrosheet event files into a local SQLite database.",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
     ingest = subparsers.add_parser("ingest", help="import a local dataset")
@@ -34,7 +34,7 @@ def build_parser() -> argparse.ArgumentParser:
     retrosheet.add_argument("--version", dest="source_version", help="release/version label recorded with the imported data")
 
     csv_parser = kinds.add_parser("csv", help="import CSV tables from another listed public source")
-    csv_parser.add_argument("source_id", help="catalog id such as chadwick_register, chadwick_retrosplits, statcast_csv, retrosheet_csv, or custom")
+    csv_parser.add_argument("source_id", help="catalog id such as chadwick_register, statcast_csv, openbiomechanics_pitching, openbiomechanics_hitting, openbiomechanics_high_performance, or custom")
     csv_parser.add_argument("source", dest="source_path", type=Path, help="directory, CSV file, or ZIP archive containing CSV files")
     csv_parser.add_argument("--db", type=Path, default=None, help="SQLite output path (default: BASEBALL_MCP_DB or data/baseball.sqlite3)")
     csv_parser.add_argument("--name", dest="display_name", help="display name for a custom source")

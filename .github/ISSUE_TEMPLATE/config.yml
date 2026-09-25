@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/harlanljones/baseball-sabermetrics-mcp/security/advisories/new
+    about: Report a vulnerability privately; do not post exploit details in a public issue.
+  - name: Usage and data rights
+    url: https://github.com/harlanljones/baseball-sabermetrics-mcp/blob/main/docs/data-sources.md
+    about: Review setup and source-specific reuse terms before importing or sharing data.

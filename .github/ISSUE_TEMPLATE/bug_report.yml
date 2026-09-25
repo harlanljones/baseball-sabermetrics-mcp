@@ -1,0 +1,36 @@
+name: Bug report
+description: Report a reproducible defect in the server, importer, or documentation.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach source datasets, SQLite databases, credentials, or human-subject records. Report security issues privately using SECURITY.md.
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: 0.1.0 or a commit SHA
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Include the expected behavior and exact error text, with local paths and sensitive values removed.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Use a synthetic or public-safe fixture. Do not include a third-party data file.
+      placeholder: 1. ...
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: 3.12.0
+    validations:
+      required: true
