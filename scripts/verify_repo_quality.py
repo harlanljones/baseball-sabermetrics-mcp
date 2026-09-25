@@ -29,7 +29,7 @@ def main() -> None:
     ]
     assert not bundled, f"Possible source data/database bundled in repository: {', '.join(bundled)}"
     assert (ROOT / "LICENSE").read_text(encoding="utf-8").startswith("MIT License")
-    print("Repository quality verification passed")
+    print("repository quality verification passed")
 
 
 if __name__ == "__main__":
