@@ -136,6 +136,7 @@ LIMIT 25
 
 ## Project documentation
 
+- [Roadmap](ROADMAP.md) and [proposed feature specifications](docs/roadmap-specs.md)
 - [Data sources and reuse](docs/data-sources.md)
 - [MCP interface reference](docs/mcp-interface.md) and [machine-readable contract](docs/mcp-interface.json)
 - [MCP best-practices audit](docs/mcp-best-practices.md)
