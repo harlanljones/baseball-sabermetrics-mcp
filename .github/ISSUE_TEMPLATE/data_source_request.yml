@@ -1,0 +1,32 @@
+name: Data source request
+description: Propose catalog or importer support for a public baseball data source.
+title: "[Source]: "
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach datasets or records. The issue should link to official source documentation and terms only.
+  - type: input
+    id: name
+    attributes:
+      label: Source name
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Official source and documentation URL
+    validations:
+      required: true
+  - type: input
+    id: terms
+    attributes:
+      label: License or reuse terms URL
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: File format and import need
+      description: Describe filenames/formats and the user need. Do not upload the files.
+    validations:
+      required: true

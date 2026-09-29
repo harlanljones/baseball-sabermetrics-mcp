@@ -1,15 +1,36 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "baseball-sabermetrics-mcp"
 version = "0.1.0"
-description = "A local, read-only MCP server for public baseball data"
+description = "A local, read-only MCP server for querying public baseball datasets in SQLite"
 requires-python = ">=3.10"
 dependencies = []
-license = { text = "MIT" }
+license = "MIT"
 readme = "README.md"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Database",
+  "Topic :: Scientific/Engineering",
+]
+
+[project.urls]
+Repository = "https://github.com/harlanljones/baseball-sabermetrics-mcp"
+Documentation = "https://github.com/harlanljones/baseball-sabermetrics-mcp#readme"
+Issues = "https://github.com/harlanljones/baseball-sabermetrics-mcp/issues"
 
 [project.scripts]
 baseball-sabermetrics = "baseball_mcp.cli:main"
@@ -17,4 +38,3 @@ baseball-sabermetrics-mcp = "baseball_mcp.server:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
