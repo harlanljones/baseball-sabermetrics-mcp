@@ -153,4 +153,4 @@ python3 -m pip install -e .
 python3 scripts/export_mcp_spec.py
 ```
 
-The verifier scripts under `scripts/` exercise protocol negotiation, data import, read-only behavior, OpenBiomechanics catalog integration, documentation coverage, repository metadata, and consistency between the live tool/resource definitions and the published interface contract. Read [Contributing](CONTRIBUTING.md) before opening a pull request.
+The verifier scripts under `scripts/` exercise protocol negotiation, data import, read-only behavior, OpenBiomechanics catalog integration, documentation coverage, repository metadata, and consistency between the live tool/resource definitions and the published interface contract. Continuous integration (`.github/workflows/quality.yml`) runs these checks across Python 3.10 through 3.14 on push, pull request, and manual dispatch. Read [Contributing](CONTRIBUTING.md) before opening a pull request.

@@ -131,7 +131,7 @@ Operators need to know which exact files produced a database, whether those file
 
 ## S6. Cross-platform CI and importer hardening
 
-**Priority:** Stage 1. **Depends on:** existing manual quality workflow.
+**Priority:** Stage 1. **Depends on:** existing quality CI workflow (`.github/workflows/quality.yml`).
 
 ### Proposed behavior
 

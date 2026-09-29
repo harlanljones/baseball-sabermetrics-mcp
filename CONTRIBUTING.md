@@ -36,7 +36,7 @@ python3 scripts/verify_project_docs.py
 python3 scripts/verify_repo_quality.py
 ```
 
-These scripts create temporary fixtures; they do not need public source files. Do not use real third-party or human-subject datasets as test fixtures. `workflow_dispatch` in GitHub Actions runs the same verification set on Python 3.10 through 3.14.
+These scripts create temporary fixtures; they do not need public source files. Do not use real third-party or human-subject datasets as test fixtures. GitHub Actions CI (`.github/workflows/quality.yml`) runs the same verification set on push, pull request, and manual `workflow_dispatch` across Python 3.10 through 3.14.
 
 ## Pull request checklist
 

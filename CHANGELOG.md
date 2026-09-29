@@ -10,6 +10,7 @@ Notable changes are recorded here. This project follows Keep a Changelog's secti
 - MCP tool annotations, output schemas, structured results, stricter argument validation, and bounded query output.
 - Current MCP 2026-07-28 per-request metadata/version discovery, legacy interoperability, paged table listings, and per-process tool-call rate limits.
 - Generated machine-readable MCP interface documentation and open-source contributor/security guidance.
+- GitHub Actions continuous integration workflow (`.github/workflows/quality.yml`) running matrix checks on Python 3.10 through 3.14 across push, pull request, and manual dispatch triggers.
 
 ### Changed
 

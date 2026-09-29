@@ -23,7 +23,7 @@ The guide is advice, not a substitute for the protocol specification. Annotation
 
 ## Verification coverage
 
-The verification scripts are intentionally offline and use temporary fixtures. They cover MCP initialization and discovery, data ingestion, read-only query behavior, schema/result consistency, the OpenBiomechanics catalog and CSV importer, documentation, and repository metadata. The GitHub Actions workflow is manually dispatched and checks Python 3.10 through 3.14.
+The verification scripts are intentionally offline and use temporary fixtures. They cover MCP initialization and discovery, data ingestion, read-only query behavior, schema/result consistency, the OpenBiomechanics catalog and CSV importer, documentation, and repository metadata. The GitHub Actions CI workflow (`.github/workflows/quality.yml`) runs on push, pull request, and manual `workflow_dispatch`, checking Python 3.10 through 3.14.
 
 ## Remaining deployment limits
 

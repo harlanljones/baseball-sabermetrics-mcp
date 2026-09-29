@@ -8,8 +8,8 @@ ROOT = Path(__file__).resolve().parents[1]
 def main() -> None:
     required = (
         "README.md", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "SECURITY.md", "SUPPORT.md",
-        "CHANGELOG.md", "docs/data-sources.md", "docs/architecture.md", "docs/security-and-operations.md",
-        "docs/mcp-best-practices.md",
+        "CHANGELOG.md", "ROADMAP.md", "docs/roadmap-specs.md", "docs/data-sources.md",
+        "docs/architecture.md", "docs/security-and-operations.md", "docs/mcp-best-practices.md",
         "docs/mcp-interface.md", "docs/mcp-interface.json", ".github/PULL_REQUEST_TEMPLATE.md",
         ".github/ISSUE_TEMPLATE/bug_report.yml", ".github/ISSUE_TEMPLATE/data_source_request.yml",
         ".github/ISSUE_TEMPLATE/config.yml", ".github/workflows/quality.yml",
