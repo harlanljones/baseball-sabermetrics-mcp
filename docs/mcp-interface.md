@@ -58,6 +58,7 @@ These resources are snapshots read from the local database. The server does not 
 | `server/discover` | Modern `_meta` with protocol version and client capabilities | Current server capabilities, supported protocol versions, instructions, and cache metadata. Unsupported version: `-32022`. |
 | `initialize` | Legacy `protocolVersion`, `capabilities`, `clientInfo` | Negotiated version, capabilities, server info, instructions. Unsupported legacy version: `-32602`. |
 | `ping` | `{}` | Empty result. |
+| `shutdown` | `{}` | Empty result. |
 | `tools/list` | `{}` | `tools` array with schemas and annotations. |
 | `tools/call` | `name`, `arguments` | MCP tool result. Tool argument validation and execution errors return `isError: true`; malformed calls and unknown tool names use JSON-RPC errors. |
 | `resources/list` | `{}` | Static `resources` array. |

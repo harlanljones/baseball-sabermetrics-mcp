@@ -98,6 +98,18 @@
         -32603
       ],
       "kind": "request",
+      "method": "shutdown",
+      "request": [],
+      "result": {
+        "resultType": "complete"
+      }
+    },
+    {
+      "errors": [
+        -32602,
+        -32603
+      ],
+      "kind": "request",
       "method": "tools/list",
       "request": [],
       "result": {

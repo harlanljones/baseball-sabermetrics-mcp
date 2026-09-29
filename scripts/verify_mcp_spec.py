@@ -7,7 +7,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from baseball_mcp.server import RESOURCES, SUPPORTED_PROTOCOLS, TOOLS
+from baseball_mcp.server import (
+    MAX_QUERY_LENGTH,
+    MAX_REQUEST_BYTES,
+    MAX_RESULT_BYTES,
+    QUERY_TIME_LIMIT_SECONDS,
+    RESOURCES,
+    SUPPORTED_PROTOCOLS,
+    TOOL_CALLS_PER_MINUTE,
+    TOOLS,
+)
 
 def main() -> None:
     document = json.loads((ROOT / "docs" / "mcp-interface.json").read_text(encoding="utf-8"))
@@ -16,14 +25,23 @@ def main() -> None:
     assert document["server"]["transport"] == "stdio"
     assert document["server"]["protocolVersions"] == sorted(SUPPORTED_PROTOCOLS, reverse=True)
     assert document["server"]["discovery"]["supportedVersions"] == sorted(SUPPORTED_PROTOCOLS, reverse=True)
-    assert document["limits"]["requestLineBytes"] == 1_000_000
+    assert document["limits"] == {
+        "sqlCharacters": MAX_QUERY_LENGTH,
+        "queryRows": next(
+            tool for tool in TOOLS if tool["name"] == "query_sql"
+        )["inputSchema"]["properties"]["limit"]["maximum"],
+        "queryExecutionSeconds": QUERY_TIME_LIMIT_SECONDS,
+        "querySerializedDataBytes": MAX_RESULT_BYTES,
+        "toolCallsPerMinute": TOOL_CALLS_PER_MINUTE,
+        "requestLineBytes": MAX_REQUEST_BYTES,
+    }
     assert document["server"]["protocolModes"]["modernPerRequestMetadata"] == ["2026-07-28"]
     assert document["tools"] == TOOLS
     assert document["resources"] == RESOURCES
     methods = {item["method"] for item in document["methods"]}
-    assert methods >= {
-        "server/discover", "initialize", "ping", "tools/list", "tools/call", "resources/list", "resources/read",
-        "notifications/initialized",
+    assert methods == {
+        "server/discover", "initialize", "ping", "shutdown", "tools/list", "tools/call",
+        "resources/list", "resources/read", "notifications/initialized",
     }
     methods_by_name = {item["method"]: item for item in document["methods"]}
     assert methods_by_name["resources/read"]["errors"]["legacy"] == [-32002]
@@ -34,6 +52,8 @@ def main() -> None:
         assert f"`{tool['name']}`" in prose
     for resource in RESOURCES:
         assert f"`{resource['uri']}`" in prose
+    for method in methods - {"notifications/initialized"}:
+        assert f"`{method}`" in prose, f"Method {method} missing from prose reference"
     print("MCP interface specification verification passed")
 
 

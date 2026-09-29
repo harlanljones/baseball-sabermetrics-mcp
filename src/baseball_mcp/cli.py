@@ -24,18 +24,18 @@ def build_parser() -> argparse.ArgumentParser:
     kinds = ingest.add_subparsers(dest="kind", required=True)
 
     lahman = kinds.add_parser("lahman", help="import the CSV files from a SABR Lahman release")
-    lahman.add_argument("source", dest="source_path", type=Path, help="directory, CSV file, or ZIP archive containing Lahman CSV files")
+    lahman.add_argument("source_path", metavar="source", type=Path, help="directory, CSV file, or ZIP archive containing Lahman CSV files")
     lahman.add_argument("--db", type=Path, default=None, help="SQLite output path (default: BASEBALL_MCP_DB or data/baseball.sqlite3)")
     lahman.add_argument("--version", dest="source_version", help="release/version label recorded with the imported data")
 
     retrosheet = kinds.add_parser("retrosheet", help="import extracted Retrosheet .EV? and .ED? event files")
-    retrosheet.add_argument("source", dest="source_path", type=Path, help="directory, event file, or ZIP archive containing event files")
+    retrosheet.add_argument("source_path", metavar="source", type=Path, help="directory, event file, or ZIP archive containing event files")
     retrosheet.add_argument("--db", type=Path, default=None, help="SQLite output path (default: BASEBALL_MCP_DB or data/baseball.sqlite3)")
     retrosheet.add_argument("--version", dest="source_version", help="release/version label recorded with the imported data")
 
     csv_parser = kinds.add_parser("csv", help="import CSV tables from another listed public source")
     csv_parser.add_argument("source_id", help="catalog id such as chadwick_register, statcast_csv, openbiomechanics_pitching, openbiomechanics_hitting, openbiomechanics_high_performance, or custom")
-    csv_parser.add_argument("source", dest="source_path", type=Path, help="directory, CSV file, or ZIP archive containing CSV files")
+    csv_parser.add_argument("source_path", metavar="source", type=Path, help="directory, CSV file, or ZIP archive containing CSV files")
     csv_parser.add_argument("--db", type=Path, default=None, help="SQLite output path (default: BASEBALL_MCP_DB or data/baseball.sqlite3)")
     csv_parser.add_argument("--name", dest="display_name", help="display name for a custom source")
     csv_parser.add_argument("--url", dest="source_url", help="source URL or export query URL to retain in the catalog")
