@@ -10,6 +10,7 @@ jobs:
   verify:
     name: Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       PYTHONPATH: src
     strategy:
@@ -23,6 +24,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Compile source and verification scripts
         run: python -m compileall -q src scripts
+      - name: Smoke-test ingestion CLI startup
+        run: python -c "from baseball_mcp.cli import build_parser; build_parser()"
+      - name: Smoke-test package build
+        run: python -m pip wheel --no-deps -w /tmp/wheel .
       - name: Check generated interface contract
         run: python scripts/export_mcp_spec.py --check
       - name: Run protocol, source, security, documentation, and repository checks
