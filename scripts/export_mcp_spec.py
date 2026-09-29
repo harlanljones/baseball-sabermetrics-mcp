@@ -13,14 +13,22 @@ sys.path.insert(0, str(ROOT / "src"))
 from baseball_mcp import __version__  # noqa: E402
 from baseball_mcp.server import (  # noqa: E402
     LEGACY_PROTOCOLS,
+    MAX_QUERY_LENGTH,
     MAX_REQUEST_BYTES,
+    MAX_RESULT_BYTES,
     MODERN_PROTOCOLS,
+    QUERY_TIME_LIMIT_SECONDS,
     RESOURCES,
     SUPPORTED_PROTOCOLS,
+    TOOL_CALLS_PER_MINUTE,
     TOOLS,
 )
 
 OUTPUT = ROOT / "docs" / "mcp-interface.json"
+
+_QUERY_ROW_LIMIT = next(
+    tool for tool in TOOLS if tool["name"] == "query_sql"
+)["inputSchema"]["properties"]["limit"]["maximum"]
 
 
 def interface_document() -> dict[str, object]:
@@ -67,6 +75,7 @@ def interface_document() -> dict[str, object]:
                 "errors": [-32602, -32603],
             },
             {"method": "ping", "kind": "request", "request": [], "result": {"resultType": "complete"}, "errors": [-32602, -32603]},
+            {"method": "shutdown", "kind": "request", "request": [], "result": {"resultType": "complete"}, "errors": [-32602, -32603]},
             {"method": "tools/list", "kind": "request", "request": [], "result": {"tools": "server.tools", "modernCache": ["ttlMs", "cacheScope"]}, "errors": [-32602, -32603]},
             {
                 "method": "tools/call",
@@ -96,11 +105,11 @@ def interface_document() -> dict[str, object]:
             {"code": -32002, "name": "Resource not found", "protocolMode": "legacy only"},
         ],
         "limits": {
-            "sqlCharacters": 20000,
-            "queryRows": 500,
-            "queryExecutionSeconds": 5,
-            "querySerializedDataBytes": 180000,
-            "toolCallsPerMinute": 120,
+            "sqlCharacters": MAX_QUERY_LENGTH,
+            "queryRows": _QUERY_ROW_LIMIT,
+            "queryExecutionSeconds": QUERY_TIME_LIMIT_SECONDS,
+            "querySerializedDataBytes": MAX_RESULT_BYTES,
+            "toolCallsPerMinute": TOOL_CALLS_PER_MINUTE,
             "requestLineBytes": MAX_REQUEST_BYTES,
         },
         "tools": TOOLS,

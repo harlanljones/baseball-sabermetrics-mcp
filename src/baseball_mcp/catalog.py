@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import sqlite3
 from typing import Any
 
 
@@ -109,7 +110,7 @@ def catalog_with_install_state(connection: Any | None) -> dict[str, Any]:
                 }
                 for row in rows
             }
-        except Exception:
+        except sqlite3.Error:
             installed = {}
 
     datasets = []
